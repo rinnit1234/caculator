@@ -25,18 +25,26 @@ public class MainActivity extends AppCompatActivity {
         Integer num2 = Integer.valueOf(et2Text);
         Integer result = null;
         boolean error=false;
-        if (view.getId() == R.id.btnPlus)
-            result= num1+num2;
-        if (view.getId()==R.id.btnMinus)
-            result=num1-num2;
-        if (view.getId()==R.id.btnMult)
-            result=num1*num2;
-        if (view.getId()==R.id.btnDiv) {
-            if (num2 == 0) {
-                Toast.makeText(this, "Can't divide by 0", Toast.LENGTH_LONG).show();
-                error = true;
+
+        if ((num1==null)||(num2==null)) {
+            Toast.makeText(this, "Must enter second number.", Toast.LENGTH_LONG).show();
+            error = true;
+        }
+        else{
+            if (view.getId() == R.id.btnPlus)
+                result = num1 + num2;
+            if (view.getId() == R.id.btnMinus)
+                result = num1 - num2;
+            if (view.getId() == R.id.btnMult)
+                result = num1 * num2;
+            if (view.getId() == R.id.btnDiv) {
+                if (num2 == 0) {
+                    Toast.makeText(this, "Can't divide by 0", Toast.LENGTH_LONG).show();
+                    error = true;
+                }
+                if (num2 != 0)
+                    result = num1 / num2;
             }
-            result = num1 / num2;
         }
         if (error==false) {
             if (result != null) {
